@@ -35,6 +35,11 @@ jobs:
         with:
           ruby-version: 2.7
           bundler-cache: true
+          
+      - name: Setup Environment.
+        run: |
+          gem install jekyll bundler
+          bundle install
 
       - name: Build Jekyll Site
         env:
