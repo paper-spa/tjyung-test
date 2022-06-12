@@ -36,10 +36,20 @@ jobs:
           ruby-version: 2.7
           bundler-cache: true
 
-      - name: 🔨 install dependencies & build site
-        uses: limjh16/jekyll-action-ts@v2
+      - name: Setup Node
+        uses: actions/setup-node@v2
         with:
-          enable_cache: true
+          node-version: 14
+          cache: 'yarn'
+
+      - name: Install packages
+        run: yarn install
+
+      - name: Build Jekyll Site
+        env:
+          JEKYLL_ENV: production
+          NODE_ENV: production
+        run: bundle exec jekyll build
         
       - name: Upload artifact
         uses: paper-spa/upload-pages-artifact@v0
