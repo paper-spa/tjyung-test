@@ -29,23 +29,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
+        
       - name: Setup Ruby and install gems
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.7
           bundler-cache: true
-          
-      - name: Setup Environment.
-        run: |
-          gem install jekyll bundler
-          bundle install
 
-      - name: Build Jekyll Site
-        env:
-          JEKYLL_ENV: production
-          NODE_ENV: production
-        run: bundle exec jekyll build
+      - name: 🔨 install dependencies & build site
+        uses: limjh16/jekyll-action-ts@v2
+        with:
+          enable_cache: true
         
       - name: Upload artifact
         uses: paper-spa/upload-pages-artifact@v0
