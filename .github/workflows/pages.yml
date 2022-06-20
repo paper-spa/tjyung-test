@@ -40,7 +40,7 @@ jobs:
         env:
           JEKYLL_ENV: production
           NODE_ENV: production
-        run: bundle exec jekyll build
+        run: bundle exec jekyll build -b "tjyung-test/"
         
       - name: Upload artifact
         uses: paper-spa/upload-pages-artifact@v0
